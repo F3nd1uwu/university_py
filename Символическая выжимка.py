@@ -1,0 +1,1 @@
+print(*set(input().lower()), sep='')
