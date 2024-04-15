@@ -1,10 +1,9 @@
 n = int(input())
-tresures = [tuple(map(int, input().split())) for _ in range (n)]
-tresure_group = {}
+treasures = [tuple(map(int, input().split())) for _ in range (n)]
+treasure_group = {}
 
-for x in tresures:
-    for x_i in x:
-        print(x_i)
+for x, y in zip(*treasures):
+    print(x, y)
     
 
-print(tresure_group)
+print(treasures)
