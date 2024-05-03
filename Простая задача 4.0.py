@@ -4,19 +4,36 @@ def divisor(n):
         if n % i == 0:
             res.add(i)
             res.add(n // i)
-    return(sorted(res))
+    return sorted(res)
 
 
 s = {}
 res = {}
-n = map(int, input().split('; '))
+n = sorted(map(int, input().split('; ')))
 for digit in n:
     if divisor(digit):
         s[digit] = divisor(digit)
     else:
-        s[digit] = None
+        s[digit] = [digit]
 
+temp_d = {}
+temp = {}
+temp_l = []
 
+for i in s:
+    temp = s[i]
+    temp_d = {k: v for k, v in s.items() if k != i}
+    for y in temp_d:
+        no_common_elements = True
+        for item in temp:
+            if item in temp_d[y]:
+                no_common_elements = False
+                break
+        if no_common_elements:
+            temp_l.append(y)
+        if temp_l:
+            res[i] = str(temp_l)[1:-1]
+    temp_l = []
 
-# for k, v in s.items():
-#     print(f"{k} - {v}")
+for k, v in res.items():
+    print(f"{k} - {v}")
